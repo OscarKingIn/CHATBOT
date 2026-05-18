@@ -1,4 +1,4 @@
-# Atlas AI Core
+# CHATBOT AI 
 
 AI-powered chatbot platform with LLM + RAG + memory.
 
