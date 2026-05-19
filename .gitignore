@@ -1,7 +1,21 @@
-.env
+# Node
+node_modules/
+.next/
+
+# Python
+venv/
 __pycache__/
 *.pyc
-node_modules/
+
+# Env
+.env
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# Build
 dist/
 build/
-postgres_data/
