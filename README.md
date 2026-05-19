@@ -60,8 +60,8 @@ NEXT_PUBLIC_API_URL=
 
 ### 1. Clone Repo
 
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/OscarKingIn/CHATBOT.git
+cd CHATBOT
 
 ### 2. Install Dependencies
 
