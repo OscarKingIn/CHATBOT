@@ -3,6 +3,22 @@
     "Dockerized",
     "fastapi",
     "pydantic",
-    "uvicorn"
-  ]
+    "uvicorn",
+    "sqlalchemy",
+    "alembic",
+    "psycopg2",
+    "langchain",
+    "jose",
+    "pytest",
+    "sessionmaker",
+    "rpush",
+    "lrange",
+    "FAISS",
+    "faiss",
+    "vectorstores"
+  ],
+  "python.analysis.extraPaths": [
+    "./backend"
+  ],
+  "python.defaultInterpreterPath": "/usr/local/bin/python3"
 }

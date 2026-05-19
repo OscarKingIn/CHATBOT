@@ -1,13 +1,14 @@
-memory_store = {}
+import redis
+import json
 
-def get_history(user_id):
-    return memory_store.get(user_id, [])
+r = redis.Redis(host="redis", port=6379, decode_responses=True)
 
 def save_message(user_id, user_msg, bot_msg):
-    if user_id not in memory_store:
-        memory_store[user_id] = []
+    key = f"chat:{user_id}"
+    data = {"user": user_msg, "bot": bot_msg}
+    r.rpush(key, json.dumps(data))
 
-    memory_store[user_id].append({
-        "user": user_msg,
-        "bot": bot_msg
-    })
+def get_history(user_id):
+    key = f"chat:{user_id}"
+    items = r.lrange(key, -10, -1)
+    return [json.loads(i) for i in items]

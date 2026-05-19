@@ -1,22 +1,22 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
-from app.services.llm import generate_response
-from app.services.memory import save_message, get_history
-from app.rag.retriever import get_context
+from app.models import Chat
+from app.database import SessionLocal
 
 router = APIRouter()
 
 class ChatRequest(BaseModel):
-    user_id: str
+    user_id: int | None = None
     message: str
 
 @router.post("/chat")
 def chat(req: ChatRequest):
-    history = get_history(req.user_id)
-    context = get_context(req.message)
+    db = SessionLocal()
 
-    response = generate_response(req.message, history, context)
+    response = "AI response here"  # your LLM logic
 
-    save_message(req.user_id, req.message, response)
+    chat_item = Chat(user_id=req.user_id or 0, message=req.message, response=response)
+    db.add(chat_item)
+    db.commit()
 
     return {"response": response}
